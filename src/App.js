@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
+import "./sass/main.scss";
+import "@progress/kendo-theme-default/dist/all.css";
+
+
+// Pages
+import LoginPage from "./pages/Login/LoginPage";
+import SchedulePage from "./pages/Schedule/SchedulePage";
+import Page404 from "./pages/404/Page404";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route exact path='/login' element={<LoginPage/>} />
+      <Route path='/' element={<SchedulePage/>} />
+      {/* <Route path='/profile' element={<ProfilePage/>} />
+      <Route path='/notification' element={<NotificationPage/>} />
+      <Route path='/dashboard/blender/:machineID' element={<Blender/>} />
+  <Route path='/dashboard/3dprinter/:machineID' element={<Printer3D/>} /> */}
+      <Route path="*" element={<Page404/>} /> 
+    </Routes>
   );
 }
 
